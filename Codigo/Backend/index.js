@@ -36,6 +36,8 @@ app.post('/saludar', (req, res) => {
     let nombre = body.nombre1
 
     console.log("Hola: " + nombre)
+
+    
   })
 
 // el servidor se levanta con => node index.js
