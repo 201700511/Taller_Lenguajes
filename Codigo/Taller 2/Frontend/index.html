@@ -42,15 +42,38 @@
     <script>
         function saludar(){
          var i = 0
-         var txt = document.getElementById("nombre").value;
+         var nombre1 = document.getElementById("nombre").value;
            
             while(i == 0){
                 
-                alert("hola " + txt)
+                alert("hola " + nombre1)
                 i++
             }
 
-            document.getElementById("nombre2").value = txt
+            document.getElementById("nombre2").value = nombre1
+
+
+            var datos = {
+                "nombre1": nombre1
+            }
+
+            fetch('http://localhost:9000/saludar', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    "Content-Type": "application/json", 
+                    "Access-Control-Allow-Methods": "POST",
+                    "Access-Control-Allow-Origin": "*"
+                },
+                body: JSON.stringify(datos)
+            })
+
+            // => significa igualacion o asignacion
+            fetch('http://localhost:9000/inicio')
+            .then(res => res.json())
+            .then(data =>{
+                console.log(data)
+            })
         }
     </script>
 </body>
